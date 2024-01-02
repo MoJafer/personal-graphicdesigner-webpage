@@ -1,0 +1,12 @@
+@keyframes lighting {
+  from {opacity: .3;}
+  50% {opacity: 1;}
+  to {opacity: .3;}
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes lighting {
+from {opacity: .3;}
+50% {opacity: 1;}
+to {opacity: .3;}
+}

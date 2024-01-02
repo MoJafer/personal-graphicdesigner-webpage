@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./assets/css/normalize.css">
+  <link rel="stylesheet" href="./assets/css/main.css">
+  <link rel="stylesheet" href="./assets/css/fontawesome.min.css">
+  <link rel="shortcut icon" href="./assets/favicon.ico">
+  <title>نادين محمد</title>
+</head>
+
+<body>
+  <main id="app" :class="language + ' main'">
+
+    <section class="info">
+      <div class="links menu bounceInDown">
+        <a @click="setContent('default')">{{ text.about }}</a>
+        <a @click="setContent('myServices')">{{ text.myServices }}</a>
+        <a @click="setContent('portfolio')">{{ text.portfolio }}</a>
+        <a @click="setContent('contact')">{{ text.contact }}</a>
+      </div>
+
+
+      <div>
+        <img src="./assets/img/picture.jpg" alt="picture" />
+        <h3 class="name">{{text.name}}</h3>
+        <p class="desc">{{text.desc}}</p>
+      </div>
+
+
+      <div class="icons">
+        <a v-for="c in contact.slice(0, 6)" :href="c.link" :title="c.title" target="_blank">
+          <i :class="c.icon"></i>
+        </a>
+      </div>
+
+      <a v-if="language == 'ar'" @click="setLanguage('en')" class="en lang">English</a>
+      <a v-if="language == 'en'" @click="setLanguage('ar')" class="ar lang">عربي</a>
+    </section>
+
+    <section id="show" class="show">
+
+      <div v-if="content == 'default'" :class="content + ' content'">
+        <h1 class="title">{{text.about}}</h1>
+        <p>{{text.bio}}</p>
+      </div>
+
+      <div v-if="content == 'myServices'" :class="content + ' content'">
+        <h1 class="title">{{text.myServices}}</h1>
+        <div class="services">
+          <ul>
+            <li v-for="service in text.services">{{ service }}</li>
+          </ul>
+          <!-- <span v-for="service in text.services">{{ service }}</span> -->
+        </div>
+      </div>
+
+
+      <div v-if="content == 'portfolio'" :class="content + ' content'">
+        <h1 class="title">{{text.portfolio}}</h1>
+        <div id="grid" class="grid">
+          <a v-for="img in images" :href="img" class="grid-item" target="_blank"><img :src="img" alt=""></a>
+        </div>
+      </div>
+
+      <!-- CONTACT LINKS  -->
+      <div v-if="content == 'contact'" :class="content + ' content'">
+        <h1 class="title">{{text.contact}}</h1>
+        <ul class="links">
+          <li v-for="c in contact">
+            <a :href="c.link" :title="c.title" target="_blank">
+              <i :class="c.icon"></i> {{c.account}} </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+
+  <script type="text/javascript" src="./assets/js/vue.min.js"></script>
+  <script type="text/javascript" src="./assets/js/main.js"></script>
+</body>
+
+</html>
